@@ -1,0 +1,114 @@
+:root {
+  --bg: #f3f6fb;
+  --card: #fff;
+  --text: #12253f;
+  --muted: #5f718a;
+  --border: #d7e1ef;
+  --primary: #1e63ff;
+  --danger: #d7263d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+h1 { margin: 0; }
+.subtitle { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.92rem; }
+
+.header-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 20px rgba(22, 44, 79, 0.06);
+}
+
+.card.full { grid-column: 1 / -1; }
+
+button, input, textarea {
+  width: 100%;
+  font: inherit;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.7rem;
+  background: #fff;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.35rem 0 0.55rem;
+}
+
+.row button { width: auto; }
+
+button { cursor: pointer; }
+button:hover { border-color: var(--primary); }
+
+button.primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+button.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+  font-weight: 700;
+}
+
+textarea, input { margin: 0.2rem 0 0.5rem; }
+
+#screenVideo {
+  width: 100%;
+  min-height: 140px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #0e1a2a;
+}
+
+.muted { color: var(--muted); }
+
+#log {
+  margin: 0;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background: #0f1d31;
+  color: #d6e6ff;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+ol, ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+
+.running { font-weight: 700; color: var(--primary); }
+.done { text-decoration: line-through; color: var(--muted); }
