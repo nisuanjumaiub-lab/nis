@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eryon Agent Runtime</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Eryon</h1>
+      <p class="subtitle">Interactive agent runtime for real task execution flows</p>
+    </div>
+    <div class="header-actions">
+      <button id="agentStart" class="primary">Start Agent Loop</button>
+      <button id="agentStop">Stop Loop</button>
+      <button id="killSwitch" class="danger">EMERGENCY KILL SWITCH</button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Prompt + Voice Control</h2>
+      <label for="textPrompt">Instruction</label>
+      <textarea id="textPrompt" rows="3" placeholder="e.g. open https://example.com then draft an email reply"></textarea>
+      <div class="row">
+        <button id="runPrompt" class="primary">Execute Prompt</button>
+        <button id="voicePrompt">🎤 Voice Prompt</button>
+      </div>
+      <p id="voiceStatus" class="muted">Voice input idle.</p>
+    </section>
+
+    <section class="card">
+      <h2>Active Integrations</h2>
+      <p class="muted">Provide optional webhook endpoints to make Eryon perform real fetch/send calls.</p>
+      <label for="emailFetchUrl">Email fetch API URL (GET)</label>
+      <input id="emailFetchUrl" type="text" placeholder="https://your-api/emails" />
+      <label for="emailSendUrl">Email send API URL (POST)</label>
+      <input id="emailSendUrl" type="text" placeholder="https://your-api/send-email" />
+      <label for="waFetchUrl">WhatsApp fetch API URL (GET)</label>
+      <input id="waFetchUrl" type="text" placeholder="https://your-api/whatsapp" />
+      <label for="waSendUrl">WhatsApp send API URL (POST)</label>
+      <input id="waSendUrl" type="text" placeholder="https://your-api/send-whatsapp" />
+      <button id="saveIntegrations">Save Integration Config</button>
+      <p id="integrationStatus" class="muted">No integration config saved.</p>
+    </section>
+
+    <section class="card">
+      <h2>Screen + Visual Context</h2>
+      <div class="row">
+        <button id="startScreen">Start Screen View</button>
+        <button id="stopScreen">Stop Screen</button>
+        <button id="analyzeScreen">Analyze Screen</button>
+      </div>
+      <video id="screenVideo" autoplay muted playsinline></video>
+      <p id="screenAnalysis" class="muted">No analysis generated.</p>
+    </section>
+
+    <section class="card">
+      <h2>Email / WhatsApp Workbench</h2>
+      <label for="emailInbox">Email thread text</label>
+      <textarea id="emailInbox" rows="4" placeholder="Paste or fetch email messages..."></textarea>
+      <label for="whatsAppInbox">WhatsApp thread text</label>
+      <textarea id="whatsAppInbox" rows="4" placeholder="Paste or fetch WhatsApp messages..."></textarea>
+      <div class="row">
+        <button id="fetchMessages">Fetch Messages</button>
+        <button id="findTasks">Extract Tasks</button>
+        <button id="replyDraft">Draft Replies</button>
+      </div>
+      <ul id="taskList"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Workflow Runner</h2>
+      <textarea id="workflowInput" rows="4" placeholder="Step 1: check email\nStep 2: draft response\nStep 3: send"></textarea>
+      <div class="row">
+        <button id="queueWorkflow">Queue Workflow</button>
+        <button id="runWorkflow">Run Workflow</button>
+      </div>
+      <ol id="workflowList"></ol>
+    </section>
+
+    <section class="card">
+      <h2>Web + YouTube + Shopping</h2>
+      <input id="siteUrl" type="text" placeholder="https://example.com" />
+      <div class="row">
+        <button id="openSite">Open Website</button>
+        <button id="playYouTube">Play on YouTube</button>
+        <button id="shopSearch">Shop Search</button>
+      </div>
+      <p class="muted">For browser safety, cross-site clicking is user-guided unless you connect platform automation tools.</p>
+    </section>
+
+    <section class="card">
+      <h2>Homework Solver</h2>
+      <textarea id="homeworkInput" rows="3" placeholder="Paste homework prompt"></textarea>
+      <button id="solveHomework">Generate Answer</button>
+      <textarea id="homeworkOutput" rows="5" placeholder="Answer output"></textarea>
+    </section>
+
+    <section class="card">
+      <h2>Save MS Word File</h2>
+      <input id="docName" type="text" value="eryon-report" placeholder="filename" />
+      <textarea id="docContent" rows="5" placeholder="Content to save"></textarea>
+      <button id="saveDoc">Save .doc</button>
+    </section>
+
+    <section class="card full">
+      <h2>Agent Action Queue</h2>
+      <div class="row">
+        <button id="autoPlan" class="primary">Autoplan from Inbox</button>
+        <button id="clearQueue">Clear Queue</button>
+      </div>
+      <ol id="actionQueue"></ol>
+    </section>
+
+    <section class="card full">
+      <h2>System Log</h2>
+      <pre id="log"></pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
